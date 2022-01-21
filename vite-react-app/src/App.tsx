@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useForceUpdate } from "./hooks";
 import routes from "./router";
 import store from "./store";
 
 function App() {
+  const forceUpdate = useForceUpdate();
+  useEffect(() => {
+    store.subscribe(() => {
+      forceUpdate();
+    });
+  });
   return (
     <Provider store={store}>
       <Router>
