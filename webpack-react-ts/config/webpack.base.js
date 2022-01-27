@@ -14,7 +14,12 @@ module.exports = {
         }]
     },
     devServer: {
-        contentBase: './dist'
+        static: {
+            directory: './dist'
+        }
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".json", ".css", ".ts", ".tsx"],
     },
     plugins: [
         new CleanWebpackPlugin({
